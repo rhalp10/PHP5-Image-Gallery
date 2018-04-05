@@ -1,4 +1,6 @@
 <?php
+//Author: Rhalp Darren R. Cabrera
+//Email:rhalpdarrencabrera@gmail.com
 require('db.php');
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
