@@ -1,3 +1,7 @@
+<!-- 
+Author: Rhalp Darren R. Cabrera
+Email:rhalpdarrencabrera@gmail.com
+ -->
 <?php 
 require('db.php');
 ?>
