@@ -40,4 +40,4 @@ See  **[commits](https://github.com/rhalp10/PHP5-Image-Gallery/commits/master)**
 
 # License
 
-PHP5-Image-Gallery licensed as [MIT License](https://github.com/rhalp10/PHP5-Image-Gallery/blob/master/LICENSE.md)
+PHP5-Image-Gallery licensed as [MIT License](https://github.com/rhalp10/PHP5-Image-Gallery/blob/master/LICENSE)
