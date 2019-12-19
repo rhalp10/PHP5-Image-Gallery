@@ -10,6 +10,10 @@ Installation
 ----------------
 You can choose one from multiple ways for installation.
 
+**Download**
+
+[![1](https://img.shields.io/badge/PHP5%20(Bootstrap3.zip)-PHP5%20Image%20Gallery__v1-success?logo=php)](https://github.com/rhalp10/PHP5-Image-Gallery/archive/v1.zip)
+
 **GitHub**
 - Fork the repository ([here is the guide](https://help.github.com/articles/fork-a-repo/)).
 - Clone to your machine
