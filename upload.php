@@ -3,13 +3,22 @@
 //Email:rhalpdarrencabrera@gmail.com
 require('db.php');
 $target_dir = "uploads/";
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+$file_tempname = $_FILES["fileToUpload"]["tmp_name"];   
+$file_basename =  basename($_FILES["fileToUpload"]["name"]);
+$file_destination = $target_dir.$file_basename;
+$file_image_type = strtolower(pathinfo($file_destination,PATHINFO_EXTENSION));
+//for unique filename 
+$file_name = $target_dir .md5($file_basename.date('Y-m-d H:i:s:u')).'.'.$file_image_type;
 $uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+$image_type_allowed = ["jpg","png","jpeg","gif"];
+
+
+
 if (isset($_POST['submit']))
 {
     $name = $_POST['Name'];
-    $Descrp = $_POST['Descrp'];
+    $descrp = $_POST['Descrp'];
     if (empty($name)) {
         echo "<script>alert('Name was empty');
                                 window.location='index.php';
@@ -18,8 +27,8 @@ if (isset($_POST['submit']))
     else
     {
         // Allow certain file formats
-        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-        && $imageFileType != "gif" ) {
+        if(!in_array($file_image_type, $image_type_allowed)) 
+        {
             
             echo "<script>alert('Sorry, only JPG, JPEG, PNG & GIF files are allowed.');
                                 window.location='index.php';
@@ -36,9 +45,8 @@ if (isset($_POST['submit']))
         } 
         else 
         {
-            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-                $imgName = $_FILES["fileToUpload"]["name"];
-                mysqli_query($con,"INSERT INTO users (`id`, `name`, `img`,`descrp`) VALUES (NULL, '$name','uploads/$imgName','$Descrp')");
+            if (move_uploaded_file($file_tempname, $file_name)) {
+                mysqli_query($con,"INSERT INTO users (`id`, `name`, `img`,`descrp`) VALUES (NULL, '$name','$file_name','$descrp')");
                 echo "<script>alert('Successfully Added');
                                 window.location='gallery.php';
                             </script>";
